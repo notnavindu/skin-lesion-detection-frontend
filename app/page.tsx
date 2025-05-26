@@ -1,15 +1,17 @@
 "use client";
 
+import ModelSelector from "@/components/ModelSelector"; // Import the new component
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
+import { models } from "@/lib/models"; // Import models
 import { samples } from "@/lib/samples";
 import { useAppStore } from "@/lib/store";
 import axios from "axios";
 import { Loader2, Play, RotateCcw, X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react"; // Import useState
 
 // Lesion type mappings
 const LESION_TYPES = {
@@ -60,6 +62,10 @@ export default function LesionClassifierDemo() {
     setInitialized,
   } = useAppStore();
 
+  const [selectedModelId, setSelectedModelId] = useState<string>(
+    models[0]?.id || ""
+  ); // Add state for selected model
+
   // Initialize images only once
   useEffect(() => {
     if (!isInitialized) {
@@ -77,7 +83,7 @@ export default function LesionClassifierDemo() {
   };
 
   const handleRunModel = async () => {
-    if (!selectedImage) return;
+    if (!selectedImage || !selectedModelId) return; // Ensure a model is selected
 
     setIsLoading(true);
     try {
@@ -95,7 +101,7 @@ export default function LesionClassifierDemo() {
       formData.append("file", imageBlob, selectedImage.imageName);
 
       const response = await axios.post(
-        "https://notnavindu-skin-lesion-detection.hf.space/predict/model1",
+        `https://notnavindu-skin-lesion-detection.hf.space/predict/${selectedModelId}`, // Use selectedModelId
         formData,
         {
           headers: {
@@ -307,9 +313,13 @@ export default function LesionClassifierDemo() {
                       </div>
 
                       <div className="mt-4  mb-4">
+                        <ModelSelector
+                          selectedModelId={selectedModelId}
+                          onModelChange={setSelectedModelId}
+                        />
                         <Button
                           onClick={handleRunModel}
-                          disabled={isLoading}
+                          disabled={isLoading || !selectedModelId}
                           className="w-full bg-zinc-700 hover:bg-zinc-600 text-white font-medium py-3"
                         >
                           {isLoading ? (
