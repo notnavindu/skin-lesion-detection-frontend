@@ -368,7 +368,7 @@ export default function LesionClassifierDemo() {
                               </div>
                             ) : (
                               <span className="text-zinc-500 text-sm">
-                                Click "Run Model" to get prediction
+                                Click &apos;Run Model&apos; to get prediction
                               </span>
                             )}
                           </div>
