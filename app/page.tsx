@@ -11,6 +11,7 @@ import { samples } from "@/lib/samples";
 import { useAppStore } from "@/lib/store";
 import axios from "axios";
 import { Loader2, Play, RotateCcw, X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react"; // Import useState
 
 // Lesion type mappings
@@ -213,10 +214,12 @@ export default function LesionClassifierDemo() {
                     className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-105"
                     onClick={() => handleImageSelect(image)}
                   >
-                    <img
+                    <Image
+                      width={158}
+                      height={158}
                       src={`/samples/${image.imageName}`}
                       alt={`Sample ${image.imageName}`}
-                      className="w-full aspect-square object-cover rounded"
+                      className="w-full aspect-square object-cover rounded "
                     />
                   </div>
                 ))
@@ -270,7 +273,9 @@ export default function LesionClassifierDemo() {
                         )}
                       </div>
                       <div className="relative">
-                        <img
+                        <Image
+                          width={400}
+                          height={400}
                           src={`/samples/${selectedImage.imageName}`}
                           alt="Selected sample"
                           className="w-full aspect-square object-cover rounded"
