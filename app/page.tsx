@@ -137,6 +137,13 @@ export default function LesionClassifierDemo() {
     );
   };
 
+  const getFullClassName = (code: string) => {
+    const entry = Object.entries(FULL_CLASS_NAMES).find(
+      ([, value]) => value === code
+    );
+    return entry ? entry[0] : code; // Return full class name or code if not found
+  };
+
   // Check if prediction is correct by comparing the predicted class name to the true label
   const isCorrectPrediction = () => {
     if (!prediction || !selectedImage) return false;
@@ -169,12 +176,6 @@ export default function LesionClassifierDemo() {
           return numB - numA;
         })
     : [];
-
-  console.log(
-    "🚀 ~ LesionClassifierDemo ~ sortedProbabilities:",
-    sortedProbabilities
-  );
-
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       <div className="container mx-auto px-6 py-8">
@@ -411,7 +412,7 @@ export default function LesionClassifierDemo() {
                                   <div className="flex items-center justify-between text-sm">
                                     <div className="flex items-center space-x-2">
                                       <span className="font-mono text-zinc-300">
-                                        {getPredictedCode(className)}
+                                        {getFullClassName(className)} /
                                       </span>
                                       <span className="text-zinc-400">
                                         {className}
