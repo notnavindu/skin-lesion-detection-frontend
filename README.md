@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Skin Lesion Detection
 
-## Getting Started
+This repository contains the **frontend** of a Skin Lesion Type Classification deep learning model.
 
-First, run the development server:
+This ia a demo application that allows users to select skin lesion images and receive predictions on the type of lesion, along with confidence scores and class activation map for each class. The goal of this project was to understand how Deep Convolutional Neural Networks (CNNs) can be used for image classification tasks, specifically in the medical domain.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🖼️ Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Click_Here-brightgreen)](https://skin-lesion-detection-frontend.vercel.app/)  
+[![Model](https://img.shields.io/badge/Model-Hugging_Face-yellow)](https://huggingface.co/spaces/notnavindu/skin-lesion-detection/tree/main)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Models
 
-To learn more about Next.js, take a look at the following resources:
+THis project supports multiple custom models as well as fine tuned models from torch vision.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can choose from:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Custom CNN
+- MobileNetV2
 
-## Deploy on Vercel
+## 🧠 Backend Inference
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This frontend communicates with a deep learning model hosted as a REST API on HuggingFace.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Tech Stack
+
+- **Frontend:** NextJS
+- **Styling:** Tailwind CSS, shadcn
+- **Backend:** Hugging Face Spaces & FastAPI
+- **AI Model:** PyTorch, torchvision
+
+## More Information
+
+For more information on the backend, model training and architecture, please refer to the [website](https://skin-lesion-detection-frontend.vercel.app/)
