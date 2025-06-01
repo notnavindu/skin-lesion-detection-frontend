@@ -11,4 +11,10 @@ export const models = [
     accuracy: "66%",
     id: "finetuned_mobile_net",
   },
+  {
+    name: "Fine Tuned EfficientNet B0",
+    UAR: "74%",
+    accuracy: "73%",
+    id: "finetuned_efficientnet",
+  },
 ];
